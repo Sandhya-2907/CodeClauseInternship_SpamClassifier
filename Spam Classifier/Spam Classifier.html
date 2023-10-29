@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Spam Checker</title>
+</head>
+<body>
+    <h1>URL Spam Checker</h1>
+    <form id="urlForm">
+        <input type="text" id="urlInput" placeholder="Enter a URL">
+        <button type="button" onclick="checkURL()">Check URL</button>
+        <p id="result"></p>
+    </form>
+    <script>
+        function checkURL() {
+            var urlInput = document.getElementById("urlInput").value;
+            var result = document.getElementById("result");
+            
+            // Define a list of keywords associated with spam
+            var spamKeywords = ["spam", "malware", "phishing", "fake"];
+
+            // Check if the URL contains any spam keywords
+            var isSpam = false;
+            for (var i = 0; i < spamKeywords.length; i++) {
+                if (urlInput.toLowerCase().includes(spamKeywords[i])) {
+                    isSpam = true;
+                    break;
+                }
+            }
+
+            // Display the result
+            if (isSpam) {
+                result.innerText = "This URL may be spam.";
+            } else {
+                result.innerText = "This URL is not spam.";
+            }
+        }
+    </script>
+</body>
+</html>
